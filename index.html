@@ -427,15 +427,35 @@
     margin-top: 28px;
     max-width: 520px;
   }
-  .about-text .sig {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 22px;
-    color: var(--espresso);
-    margin-top: 36px;
-    display: flex; align-items: center; gap: 14px;
+  .about-pillars {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-top: 32px;
   }
-  .about-text .sig::before { content: ""; width: 30px; height: 1px; background: var(--espresso); }
+  .pillar {
+    display: flex; align-items: center; gap: 12px;
+    padding: 14px 16px;
+    border: 1px solid var(--hair-line);
+    border-radius: 8px;
+    background: var(--cream-soft);
+  }
+  .pillar-ico {
+    flex-shrink: 0;
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    background: var(--cream-deep);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .pillar-ico svg { width: 16px; height: 16px; stroke: var(--mocha); }
+  .pillar-text {
+    font-family: 'Archivo Narrow', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: var(--espresso);
+  }
   .about-stats {
     display: flex; gap: 50px;
     margin-top: 50px;
@@ -1130,12 +1150,26 @@
       in beauty.
     </h2>
     <p class="reveal d2">
-      Cuticles &amp; Curls is a women's boutique salon tucked into a quiet street in Saar. We believe a salon should feel less like an appointment and more like an exhale — somewhere you settle into a warm chair, a tiny cup of cardamom coffee in hand, while gentle hands tend to every detail.
+      A women's boutique salon in Saar — unhurried, in-house crafted, and made to feel like an exhale.
     </p>
-    <p class="reveal d3">
-      From a fresh balayage to a herbal sidr treatment our grandmothers would recognise, every service is unhurried, considered, and made for you. Nothing rushed. Nothing routine.
-    </p>
-    <div class="sig reveal d4 serif">— The Cuticles &amp; Curls family</div>
+    <div class="about-pillars reveal d3">
+      <div class="pillar">
+        <div class="pillar-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z"/><circle cx="12" cy="9" r="2"/></svg></div>
+        <div class="pillar-text">Saar, Bahrain</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22C6.5 22 2 17.5 2 12S6.5 2 12 2s10 4.5 10 10-4.5 10-10 10z"/><path d="M12 6v6l4 2"/></svg></div>
+        <div class="pillar-text">Open every day</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+        <div class="pillar-text">Women only</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
+        <div class="pillar-text">50+ services</div>
+      </div>
+    </div>
     <div class="about-stats reveal d5">
       <div class="stat"><div class="num"><em>11.2</em>K</div><div class="lbl">On Instagram</div></div>
       <div class="stat"><div class="num">9—9</div><div class="lbl">Open daily</div></div>
@@ -1148,9 +1182,7 @@
 <section class="treatments" id="treatments">
   <div class="section-tag reveal">Signature · In-House</div>
   <h2 class="h-display reveal d1">Freshly-crafted<br/><em>treatments</em>.</h2>
-  <p class="lede reveal d2">
-    A deep dive into our in-house rituals — natural, slow-made, and rooted in this region's beauty traditions. Each one is mixed fresh, on the day, by us.
-  </p>
+  <p class="lede reveal d2">Natural, slow-made, mixed fresh on the day — rooted in this region's beauty traditions.</p>
 
   <div class="treatment-grid">
     <div class="t-card reveal">
@@ -1203,7 +1235,7 @@
         <img src="assets/29.jpg" alt="Wavy hair blow-dry" />
       </div>
       <h3>Hair, <em>head to ends</em>.</h3>
-      <p>Wash, cut, colour, blowdry. Every service starts with a head massage and your favourite drink — never with a clock-watch.</p>
+      <p>Wash, cut, colour, blowdry — starting with a head massage and your favourite drink.</p>
     </div>
     <div class="svc-list">
       <div class="svc-group">
@@ -1241,7 +1273,7 @@
         <img src="assets/25.jpg" alt="Spa room" />
       </div>
       <h3>Nails &amp; <em>spa</em>.</h3>
-      <p>From a quick gel manicure to a full afternoon ritual — Moroccan hammam, massage, and pedicure in our quiet upstairs spa.</p>
+      <p>Gel manicure to full hammam ritual — in our quiet upstairs spa.</p>
     </div>
     <div class="svc-list">
       <div class="svc-group">
@@ -1281,7 +1313,7 @@
         <img src="assets/31.jpg" alt="Eyelash extensions" />
       </div>
       <h3>Brows, lashes<br/>&amp; <em>smoothing</em>.</h3>
-      <p>The detail work — a perfect arch, a fuller lash, smoother skin. Slow and steady with a senior technician, every time.</p>
+      <p>Perfect arches, fuller lashes, smoother skin — with a senior technician, every time.</p>
     </div>
     <div class="svc-list">
       <div class="svc-group">
@@ -1325,7 +1357,7 @@
         <img src="assets/32.jpg" alt="Hair balayage" />
       </div>
       <h3>Colour, <em>quietly done</em>.</h3>
-      <p>Soft balayages, gentle root touch-ups, lived-in highlights. We use ammonia-free options on request and a bond-builder in every formula.</p>
+      <p>Balayage, roots, highlights — ammonia-free on request, bond-builder in every formula.</p>
     </div>
     <div class="svc-list">
       <div class="svc-group">
@@ -1363,7 +1395,7 @@
       <div class="section-tag reveal">From the chair</div>
       <h2 class="h-display reveal d1">Our work,<br/><em>up close</em>.</h2>
     </div>
-    <p class="copy reveal d2">A small look at what's been happening lately — fresh sets, soft balayages, brows we're quietly proud of, and the corners of the salon that make it feel like ours.</p>
+    <p class="copy reveal d2">Fresh sets, soft balayages, and the corners of the salon that make it feel like ours.</p>
   </div>
 
   <div class="g-grid">
