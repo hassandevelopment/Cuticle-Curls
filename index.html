@@ -260,8 +260,8 @@
   }
   .hero-right .heroimg {
     position: absolute; inset: 0;
-    background-size: contain;
-    background-position: center;
+    background-size: cover;
+    background-position: center 30%;
     background-repeat: no-repeat;
     background-color: var(--cream-deep);
     transform: scale(1.02);
@@ -273,7 +273,9 @@
   .hero-right::after {
     content: "";
     position: absolute; inset: 0;
-    background: linear-gradient(160deg, transparent 70%, rgba(40,25,14,.08));
+    background:
+      linear-gradient(to bottom, var(--cream) 0%, rgba(242,233,216,0.55) 12%, transparent 32%),
+      linear-gradient(160deg, transparent 70%, rgba(40,25,14,.08));
     pointer-events: none;
   }
   /* floating logo medallion — lives in .hero, bridges both panels */
@@ -1082,7 +1084,7 @@
   </div>
 
   <div class="hero-right">
-    <div class="heroimg" style="background-image:url('assets/36.jpg');"></div>
+    <div class="heroimg" style="background-image:url('assets/37.jpg');"></div>
     <div class="hero-cap">A small ritual, made for you</div>
   </div>
   <div class="hero-medal"><img src="assets/01.png" alt="Cuticles &amp; Curls logo" /></div>
