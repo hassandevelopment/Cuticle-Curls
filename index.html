@@ -1059,6 +1059,132 @@
     .cursor-dot { display: none; }
   }
 
+  /* ═══════════════════════════════════════
+     COMPONENT POLISH — states + interactions
+     ═══════════════════════════════════════ */
+
+  /* ── Focus rings (brand-consistent) ── */
+  :focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+
+  /* ── Nav: active press + focus ── */
+  nav .book:active { transform: scale(0.97); }
+  nav .book:focus-visible { outline-color: var(--gold); }
+  nav .links a:focus-visible { outline-color: var(--gold); }
+
+  /* ── Hero buttons: active press ── */
+  .btn-primary:active { transform: translateY(0) scale(0.98); box-shadow: none; }
+  .btn-ghost:active   { transform: translateY(0) scale(0.98); }
+  .btn-primary:focus-visible,
+  .btn-ghost:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+  /* ── Service tabs: active + focus ── */
+  .svc-tab:active { transform: scale(0.97); }
+  .svc-tab:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+  /* ── Service items: hover background tint + focus ── */
+  .svc-item {
+    transition: padding-left .3s var(--ease), background .2s var(--ease);
+    border-radius: 4px;
+  }
+  .svc-item:hover { background: rgba(40,25,14,.03); }
+  .svc-item:focus-within { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+  /* ── Treatment cards: hover shadow lift ── */
+  .t-card {
+    transition: border-color .3s var(--ease), transform .25s var(--ease), box-shadow .25s var(--ease);
+  }
+  .t-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px -8px rgba(40,25,14,.15);
+  }
+
+  /* ── About pillars: hover lift + focus ── */
+  .pillar {
+    transition: transform .2s var(--ease), box-shadow .2s var(--ease), border-color .2s var(--ease);
+    cursor: default;
+  }
+  .pillar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px -4px rgba(40,25,14,.12);
+    border-color: var(--gold);
+  }
+
+  /* ── Gallery cells: overlay + scale on hover ── */
+  .g-cell {
+    transition: box-shadow .25s var(--ease);
+  }
+  .g-cell::before {
+    content: "";
+    position: absolute; inset: 0;
+    background: rgba(40,25,14,0);
+    transition: background .35s var(--ease);
+    z-index: 1;
+    pointer-events: none;
+  }
+  .g-cell:hover::before { background: rgba(40,25,14,.18); }
+  .g-cell:hover { box-shadow: 0 8px 24px -6px rgba(40,25,14,.25); }
+  .g-cell:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+  /* ── Visit info links ── */
+  .info-block a:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; border-radius: 2px; }
+
+  /* ── Visit CTA button: active press ── */
+  .visit-card .cta:active { transform: scale(0.98); }
+  .visit-card .cta:focus-visible { outline: 2px solid var(--cream); outline-offset: 3px; }
+
+  /* ── Staggered reveal for service items ── */
+  .svc-panel.active .svc-item {
+    opacity: 0;
+    animation: svcItemIn .35s var(--ease-out) forwards;
+  }
+  .svc-panel.active .svc-item:nth-child(1) { animation-delay: .05s; }
+  .svc-panel.active .svc-item:nth-child(2) { animation-delay: .10s; }
+  .svc-panel.active .svc-item:nth-child(3) { animation-delay: .15s; }
+  .svc-panel.active .svc-item:nth-child(4) { animation-delay: .20s; }
+  .svc-panel.active .svc-item:nth-child(5) { animation-delay: .25s; }
+  @keyframes svcItemIn {
+    from { opacity: 0; transform: translateX(-8px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  /* ── Pillar entrance stagger ── */
+  .about-pillars .pillar {
+    opacity: 0;
+    animation: pillarIn .45s var(--ease-out) forwards;
+  }
+  .about-pillars .pillar:nth-child(1) { animation-delay: .1s; }
+  .about-pillars .pillar:nth-child(2) { animation-delay: .2s; }
+  .about-pillars .pillar:nth-child(3) { animation-delay: .3s; }
+  .about-pillars .pillar:nth-child(4) { animation-delay: .4s; }
+  @keyframes pillarIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  /* ── Layered card shadow tokens ── */
+  .t-card { box-shadow: 0 1px 2px rgba(40,25,14,.03); }
+  .visit-card { box-shadow: 0 2px 4px rgba(40,25,14,.06), 0 12px 28px -8px rgba(40,25,14,.18); }
+
+  /* ── Smooth tab switch (already has panelIn, refine timing) ── */
+  @keyframes panelIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  /* ── Reduced motion: kill all animations ── */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
 </style>
 </head>
 <body>
@@ -1399,14 +1525,14 @@
   </div>
 
   <div class="g-grid">
-    <div class="g-cell reveal" data-label="Royal Spa"><img src="assets/30.jpg" alt="Royal spa treatment" /></div>
-    <div class="g-cell reveal d1" data-label="Chocolate French"><img src="assets/37.jpg" alt="Chocolate French nails" /></div>
-    <div class="g-cell reveal d2" data-label="Lash extensions"><img src="assets/31.jpg" alt="Lash extensions" /></div>
-    <div class="g-cell reveal d1" data-label="Balayage"><img src="assets/32.jpg" alt="Balayage hair" /></div>
-    <div class="g-cell reveal d2" data-label="Soft pink"><img src="assets/36.jpg" alt="Pink manicure" /></div>
-    <div class="g-cell reveal" data-label="Wavy &amp; blowdry"><img src="assets/29.jpg" alt="Wavy hair" /></div>
-    <div class="g-cell reveal d1" data-label="Hair Spa"><img src="assets/28.jpg" alt="Kerastase station" /></div>
-    <div class="g-cell reveal d2" data-label="Spa room"><img src="assets/25.jpg" alt="Massage room" /></div>
+    <div class="g-cell reveal" data-label="Royal Spa" tabindex="0" role="img" aria-label="Royal Spa treatment"><img src="assets/30.jpg" alt="Royal spa treatment" /></div>
+    <div class="g-cell reveal d1" data-label="Chocolate French" tabindex="0" role="img" aria-label="Chocolate French nails"><img src="assets/37.jpg" alt="Chocolate French nails" /></div>
+    <div class="g-cell reveal d2" data-label="Lash extensions" tabindex="0" role="img" aria-label="Lash extensions"><img src="assets/31.jpg" alt="Lash extensions" /></div>
+    <div class="g-cell reveal d1" data-label="Balayage" tabindex="0" role="img" aria-label="Balayage hair"><img src="assets/32.jpg" alt="Balayage hair" /></div>
+    <div class="g-cell reveal d2" data-label="Soft pink" tabindex="0" role="img" aria-label="Soft pink manicure"><img src="assets/36.jpg" alt="Pink manicure" /></div>
+    <div class="g-cell reveal" data-label="Wavy &amp; blowdry" tabindex="0" role="img" aria-label="Wavy blowdry"><img src="assets/29.jpg" alt="Wavy hair" /></div>
+    <div class="g-cell reveal d1" data-label="Hair Spa" tabindex="0" role="img" aria-label="Hair Spa treatment"><img src="assets/28.jpg" alt="Kerastase station" /></div>
+    <div class="g-cell reveal d2" data-label="Spa room" tabindex="0" role="img" aria-label="Spa room"><img src="assets/25.jpg" alt="Massage room" /></div>
   </div>
 </section>
 
